@@ -1,0 +1,139 @@
+@font-face {
+    font-family: ubuntu;
+    src: url("../Assets/Fonts/Ubuntu-Bold.ttf");
+}
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: ubuntu;  
+}
+.parant-navbar
+{
+   margin-top: -60px;  
+   height: 110px;
+   top: 0%;  
+    background-color: #02174f09;
+}
+.child-navbar1
+{ 
+    margin-top: 55px;
+    height: 55px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #ccc; 
+}
+.dashdb
+{
+    padding: 6px;
+    padding-left: 52px;
+    font-size: 19px;
+    cursor: pointer;
+}
+.list-icon
+{
+     padding: 6px;
+    padding-left: 52px;
+    font-size: 19px;
+    cursor: pointer;
+}
+.navbar-1
+{
+    margin-left: 260px;
+    width:44%;
+}
+.navbar-2 
+{ 
+    margin-top: 6px;
+    margin-left: 700px;
+    width: 260px;
+}
+.navbar-2 ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.navbar-2 li a {
+    text-decoration: none;
+    color: #120101;
+    padding: 8px 12px; 
+}
+.navbar-2 li a:hover {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+}
+.child-navbar2
+{ 
+    margin-top: 5px;
+    height: 55px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.navbar-3
+{
+    margin-left: 277px;
+    width:50%;
+}
+.navbar-4 
+{
+    margin-left: 480px;
+    width: 40%;
+}
+.navbar-4 ul li{
+    display: flex;
+    width: 100px;
+}
+.navbar-4 ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.navbar-4 li a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px; 
+}
+.navbar-4 li a:hover {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+}
+
+
+/* here to signin page for css */
+.signin-subpage
+{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items:last baseline;
+    height: 170px;
+    width: 245px;
+   border:solid 2px;
+    border-radius: 8px;
+    margin-left: -330px;
+    margin-top: 114px;
+     z-index: -1;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.signin-subpage button
+{
+    height: 35px;
+    width: 117px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+} 
+.signin-subpage button:hover
+{
+     background-color: #45a049;      
+     color: #fff;
+    
+}
+
+
