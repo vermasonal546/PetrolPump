@@ -30,7 +30,7 @@ import baseUrl from "./Url"
        if(value)
        {
         
-         axios.get(`${baseUrl}/fetchAll`).then(res =>{
+         axios.get(`https://petrol-pump-store-production.up.railway.app/fetchAll`).then(res =>{
           // const finaldata= res.data.map((item, index) => ({...item, id: index + 1, isActive: true }));
           setdata(res.data)
 
