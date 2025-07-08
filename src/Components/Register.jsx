@@ -62,7 +62,7 @@ console.log(login1);
         localStorage.setItem("loginobj", JSON.stringify(res.data));
         localStorage.setItem("status",true);
         localStorage.setItem("login",true)
-        navigate("/home")
+        //navigate("/home")
           //  window.location.reload();
           
     })
