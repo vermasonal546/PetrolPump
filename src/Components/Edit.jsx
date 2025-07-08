@@ -22,7 +22,7 @@ const Edit = () => {
       
         if(id)
         {
-          axios.get(`${baseUrl}/${id}`).then(res=> setRecivedData(res.data)
+          axios.get(`${baseUrl}/fetch/${id}`).then(res=> setRecivedData(res.data)
 
         )
         }
