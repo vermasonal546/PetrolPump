@@ -67,6 +67,8 @@ const Add_party = () => {
           accountNo: '', bankName: '', ifsc: '', branch: '',
           contactPerson: '', contactMobile: '', contactEmail: ''
         });
+        alert("Data Added Sucessfully")
+        window.location.reload()
         setError({});
       } else if (res.error) {
         const errors = {};
