@@ -38,7 +38,7 @@ import baseUrl from "./Url"
        }
        
         
-     },[value])
+     })
       
      const pagenumber =(p)=>{
            setselect(p.target.value)
