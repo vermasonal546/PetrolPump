@@ -15,7 +15,6 @@ const App = () => {
     <div>
          <BrowserRouter>
    <AppContext login={login} setLogin={setLogin}/>
-
   <Routes>
     <Route path="/navbar" element={<Navbar/>}/>
     <Route path="/Add-party" element={<Add_party/>}/>
@@ -24,7 +23,6 @@ const App = () => {
     <Route path='/register' element={<Register/>}/>
     <Route path='/party-List' element={<Party_List login={login}/>} />  
     <Route path='/editparty' element={<Edit/>} />  
-    
   </Routes>
       
 

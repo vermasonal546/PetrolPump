@@ -3,15 +3,15 @@ import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouseChimney,faGaugeHigh,faList} from '@fortawesome/free-solid-svg-icons';
 import { Link, useLocation, useNavigate } from 'react-router-dom';import { faGauge } from '@fortawesome/free-solid-svg-icons';
-import js from '@eslint/js';
-import Register from './Register';
+import { useContext } from 'react';
+import { UserContext } from './UserContext';
 const Navbar = ({update, update2, name, status,setCross, setLogin, setLogout }) => { 
  
   let navigate = useNavigate()
   const location = useLocation();
    let [show,setShow] = useState(false);
    let[down,setDown]=useState(false)
-   
+   const { loginData } = useContext(UserContext);
    const clickscreen=useRef(null)
    
    const click = (e) => {
@@ -49,7 +49,7 @@ const Navbar = ({update, update2, name, status,setCross, setLogin, setLogout }) 
              </div>
                  <div className="navbar-2" ref={clickscreen}>
                       <ul>
-                             <li>{status ? <Link onClick={()=>{setShow(!show)}}>{name}</Link> : <Link onClick={()=> {setLogin(true)}}>SignIn</Link>}</li>
+                             <li>{status ? <Link onClick={()=>{setShow(!show)}}>{loginData?.name}</Link> : <Link onClick={()=> {setLogin(true)}}>SignIn</Link>}</li>
 
                              <li><Link to="/home"><span style={{ paddingRight:"5px"}}><FontAwesomeIcon icon={faHouseChimney}/></span></Link></li>
                       </ul>

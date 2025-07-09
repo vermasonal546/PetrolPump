@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import './Register.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import baseUrl from './Url';
+import { UserContext } from './UserContext';
 const Register = ({lgn}) => {
   const [signin, setsignin] = useState(false);      
   const [signinobj, setsigninobj] = useState({
@@ -15,6 +16,8 @@ const Register = ({lgn}) => {
       password: "",
       phone_number : ""
   })
+const { setLoginData } = useContext(UserContext);
+
   const navigate=useNavigate();
     const signinData = (s) => {
       const {name,value}=s.target
@@ -51,23 +54,25 @@ console.log(login1);
   const change2=(e)=>{
     setPassword(e.target.value);
   }
-  const click1=(e)=>{
-       e.preventDefault();
-    axios.get(`http://localhost:8080/login?email=${email}&password=${password}`).then(res=>{
-       setLoginobj(res.data);
-       console.log(baseUrl);
+  const click1 = (e) => {
+  e.preventDefault(); // ✅ STOP the form from submitting normally
 
-       console.log("click one excuted");
-       
-        localStorage.setItem("loginobj", JSON.stringify(res.data));
-        localStorage.setItem("status",true);
-        localStorage.setItem("login",true)
-        //navigate("/home")
-          //  window.location.reload();
-          
+  axios
+    .get(`${baseUrl}/login?email=${email}&password=${password}`)
+    .then((res) => {
+      setLoginobj(res.data);
+      localStorage.setItem("loginobj", JSON.stringify(res.data));
+      localStorage.setItem("status", true);
+      localStorage.setItem("login", true);
+      setLoginData(res.data)
+     
     })
-   
-      }   
+    .catch((err) => {
+      console.error("Login error:", err);
+      alert("Invalid login credentials.");
+    });
+};
+  
   return (
 
    <>
