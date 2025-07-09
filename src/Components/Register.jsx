@@ -52,8 +52,8 @@ console.log(login1);
     setPassword(e.target.value);
   }
   const click1=(e)=>{
-     //  e.preventDefault();
-    axios.get(`${baseUrl}/login?email=${email}&password=${password}`).then(res=>{
+       e.preventDefault();
+    axios.get(`http://localhost:8080/login?email=${email}&password=${password}`).then(res=>{
        setLoginobj(res.data);
        console.log(baseUrl);
 
