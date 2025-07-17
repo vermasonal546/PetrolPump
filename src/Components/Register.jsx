@@ -65,6 +65,7 @@ console.log(login1);
       localStorage.setItem("status", true);
       localStorage.setItem("login", true);
       setLoginData(res.data)
+      window.location.reload();
      
     })
     .catch((err) => {

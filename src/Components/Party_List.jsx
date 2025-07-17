@@ -3,7 +3,7 @@ import axios from "axios"
 import './Party_List.css'
 import { useNavigate } from "react-router-dom"
 import baseUrl from "./Url"
-
+import ShowPages from './ShowPages'
   const Party_List = () => {
 
      const [data, setdata] = useState([])
@@ -12,6 +12,7 @@ import baseUrl from "./Url"
      const [searchTerm, setSearchTerm] = useState("");
      const[active,setActive]=useState(false);
      const[set,setSet] = useState(false);
+     const [show, setShow] = useState(false);
      const value=localStorage.getItem("login")
      useEffect(()=>{
     if(value)
@@ -90,6 +91,102 @@ const remove=(id)=>{
       //   alert("Party not deleted");
       //  }
 }
+ const print = (id) => {
+    const party = data.find(x => x.id === id);
+    const printhtml = `
+    <html>
+    <head>
+        <title>Party Details</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+            form {
+                max-width: 600px;
+                margin: auto;
+                display: grid;
+                grid-template-columns: 150px 1fr;
+                row-gap: 10px;
+                column-gap: 20px;
+            }
+            label {
+                font-weight: bold;
+                align-self: center;
+            }
+            input {
+                border: 1px solid #ccc;
+                padding: 5px 10px;
+                font-size: 14px;
+                background-color: #f9f9f9;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 style="text-align:center;">Party Information</h2>
+        <form>
+           <label>Party Name</label>
+            <input value="${party.partyName}" readonly/>
+            
+            <label>Address1</label>
+            <input value="${party.address1}" readonly/>
+            
+            <label>Address2</label>
+            <input value="${party.address2}" readonly/>
+            
+            <label>City</label>
+            <input value="${party.city}" readonly/>
+            
+            <label>Bank Name</label>
+            <input value="${party.bankName}" readonly/>
+            
+            <label>Branch</label>
+            <input value="${party.branch}" readonly/>
+            
+            <label>Contact Email</label>
+            <input value="${party.contactEmail}" readonly/>
+            
+            <label>Contact Mobile</label>
+            <input value="${party.contactMobile}" readonly/>
+            
+            <label>Contact Person</label>
+            <input value="${party.contactPerson}" readonly/>
+            
+            <label>Email Id</label>
+            <input value="${party.emailId}" readonly/>
+            
+            <label>GST No</label>
+            <input value="${party.gstNo}" readonly/>
+            
+            <label>Party ID</label>
+            <input value="${party.id}" readonly/>
+            
+            <label>IFSC</label>
+            <input value="${party.ifsc}" readonly/>
+            
+            <label>Mobile No</label>
+            <input value="${party.mobileNo}" readonly/>
+                
+            <label>State</label>
+            <input value="${party.state}" readonly/>
+        </form>
+    </body>
+    </html>`;
+
+    const windowss = window.open('', '', 'width=700,height=800');
+    windowss.document.write(printhtml);
+    windowss.document.close();
+    windowss.focus();
+    windowss.print();
+    windowss.close();
+}
+const propsend=(id)=>{
+  const datas=data;
+  navigate("/ShowPages",{ state:{id,datas}})
+ 
+}
+
   return (
     <>
   {
@@ -132,22 +229,11 @@ const remove=(id)=>{
     data.filter(x => {
     const term = searchTerm.toLowerCase();
     return (
-      String(x.id).includes(term) ||
-      String(x.partyName).toLowerCase().includes(term) ||
-      String(x.address1).toLowerCase().includes(term) ||
-      String(x.address2).toLowerCase().includes(term) ||
-      String(x.city).toLowerCase().includes(term) ||
-      String(x.state).toLowerCase().includes(term) ||
-      String(x.mobileNo).includes(term) ||
-      String(x.emailId).toLowerCase().includes(term) ||
-      String(x.gstNo).toLowerCase().includes(term) ||
-      String(x.accountNo).toLowerCase().includes(term) ||
-      String(x.bankName).toLowerCase().includes(term) ||
-      String(x.ifsc).toLowerCase().includes(term) ||
-      String(x.branch).toLowerCase().includes(term) ||
-      String(x.contactPerson).toLowerCase().includes(term) ||
-      String(x.contactMobile).includes(term) ||
-      String(x.contactEmail).toLowerCase().includes(term)
+       String(x.partyName).toLowerCase().includes(term) ||
+       String(x.mobileNo).includes(term) ||
+       String(x.gstNo).toLowerCase().includes(term) ||
+       String(x.contactPerson).toLowerCase().includes(term)
+     
     );
   })
 
@@ -170,9 +256,13 @@ const remove=(id)=>{
               setSet(true);
             }}>🚫</button>
             <button onClick={() => remove(x.id)}>❌</button>
+            <button onClick={() => print(x.id)}>🖨️</button>
+            <button onClick={()=>propsend(x.id)}>👁️</button>
+            
           </td>
         </tr>
       ))
+      
   }
 </tbody>
 

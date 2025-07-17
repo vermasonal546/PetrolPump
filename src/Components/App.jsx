@@ -9,12 +9,15 @@ import AppContext from './Pages/AppContext.jsx'
 import Register from './Register.jsx'
 import Party_List from './Party_List.jsx'
 import Edit from './Edit.jsx'
+import ShowPages from './ShowPages.jsx'
+
 const App = () => {
     const [login,setLogin]=useState(false)
   return (
     <div>
          <BrowserRouter>
    <AppContext login={login} setLogin={setLogin}/>
+   
   <Routes>
     <Route path="/navbar" element={<Navbar/>}/>
     <Route path="/Add-party" element={<Add_party/>}/>
@@ -23,6 +26,8 @@ const App = () => {
     <Route path='/register' element={<Register/>}/>
     <Route path='/party-List' element={<Party_List login={login}/>} />  
     <Route path='/editparty' element={<Edit/>} />  
+    <Route path='/ShowPages' element={<ShowPages/>} />  
+
   </Routes>
       
 
